@@ -29,9 +29,9 @@ while True:
                     #      then ask for a name of necessary recipe and check by this name the recipe
             if option == "3":
                 print("You have selected a tab:[ABOUT]")
-                print("To continue - type (c)ontinue, to go back - type (b)ack")
+                print('\tThis project is dedicated to help you store your liked recipes.\nHere, you can put a recipe in our program in order to easily find it when you want to cook it.\nDaily, many people find themselves struggling to find a recipe they have heard about in the past, but not being able to find it.\nThis program is the solution.')
+                print("To go back - type (b)ack")
                 answer = input()
                 if answer == "b" or answer == "back":
                     break
-                elif answer == "c" or answer == "continue":
-                    #ToDo: print something about our project
+
