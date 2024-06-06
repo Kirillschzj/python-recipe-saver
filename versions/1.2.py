@@ -27,12 +27,8 @@ while True:
                 if answer == "b" or answer == "back":
                     break
                 elif answer == "c" or answer == "continue":
-                    if not recipes:
-                        print("You don't have available recipes")
-                    else:
-                        print("Available recipes: ")
-                        for name in recipes:
-                            print()
+                    #ToDo: print the list of accessible recipes
+                    #      then ask for a name of necessary recipe and check by this name the recipe
             if option == "3":
                 print("You have selected a tab:[ABOUT]")
                 print('\tThis project is dedicated to help you store your liked recipes.\nHere, you can put a recipe in our program in order to easily find it when you want to cook it.\nDaily, many people find themselves struggling to find a recipe they have heard about in the past, but not being able to find it.\nThis program is the solution.')
