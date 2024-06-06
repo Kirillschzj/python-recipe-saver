@@ -1,3 +1,5 @@
+recipes = {}
+
 while True:
     print("Choose option:")
     print("1 = [NEW RECIPE]")
