@@ -23,6 +23,8 @@ while True:
                     recipes[f'{new_key}_ing'] = input('Now, enter the needed ingredients\n')
                     recipes[f'{new_key}_ppl'] = input('For how many people will this dish be?(include the words "adults, children, people")\n')
                     print(f'You have added a new recipe: {new_key}. Ingredients: {recipes[f'{new_key}_ing']}. It will be made for: {recipes[f'{new_key}_ppl']}')
+                    with open('recipes.txt', 'w') as file:  # Saves the recipe in a file
+                        file.write(f'{recipes}')
             elif option == "2":
                 print("You have selected a tab:[MY RECIPES]")
                 print("To continue - type (c)ontinue, to go back - type (b)ack")
