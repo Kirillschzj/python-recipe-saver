@@ -18,13 +18,11 @@ while True:
                 if answer == "b" or answer == "back":
                     break
                 elif answer == "c" or answer == "continue":
-                    #ToDo: create the new dictionary with NAME, INGREDIENTS AND HOW MUCH YOU NEED, FOR HOW MANY PEOPLE WILL THIS DISH BE.
-                    new_key = input('Please, enter the name of the new recipe\n')
-                    recipes[f'{new_key}_ing'] = input('Now, enter the needed ingredients\n')
-                    recipes[f'{new_key}_ppl'] = input('For how many people will this dish be?(include the words "adults, children, people")\n')
-                    print(f'You have added a new recipe: {new_key}. Ingredients: {recipes[f'{new_key}_ing']}. It will be made for: {recipes[f'{new_key}_ppl']}')
-                    with open('recipes.txt', 'w') as file:  # Saves the recipe in a file
-                        file.write(f'{recipes}')
+                    response = input("Type a name for the new recipe: \n")
+                    recipes[response] = {}
+                    recipes[response]["name"] = response
+                    recipes[response]["ingredients"] = input("Input ingredients using comma, like this (soap, fireworks, dinamyte): \n")
+                    recipes[response]["people"] = input("Input for how many people will this dish be(indicate the age of consumer): \n")
             elif option == "2":
                 print("You have selected a tab:[MY RECIPES]")
                 print("To continue - type (c)ontinue, to go back - type (b)ack")
@@ -32,9 +30,17 @@ while True:
                 if answer == "b" or answer == "back":
                     break
                 elif answer == "c" or answer == "continue":
-                    #ToDo: print the list of accessible recipes
-                    #      then ask for a name of necessary recipe and check by this name the recipe
-                    print('workinprogress')
+                    for recipe_name in recipes:
+                        print(recipe_name)
+
+                    response_name = input("Type the reciepe you are searching for: ")
+
+                    if recipes[response_name] == None:
+                        print("This recipe is not available: ")
+                    else:
+                        print(f"Name = '{recipes[response_name]["name"]}'")
+                        print(f"Ingredients = '{recipes[response_name]["ingredients"]}'")
+                        print(f"People = '{recipes[response_name]["people"]}'")
             elif option == "3":
                 print("You have selected a tab:[ABOUT]")
                 print("To continue - type (c)ontinue, to go back - type (b)ack")
