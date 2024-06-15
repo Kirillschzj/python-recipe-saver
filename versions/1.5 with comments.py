@@ -1,23 +1,48 @@
-recipes = {} # Dictionary to store recipes
+import json
+from pathlib import Path
+
+# recipes = [] # Dictionary to store recipes
+
+my_recipes = Path("recipes.json")
+
+def read_recipes():
+    if my_recipes.exists():
+        with my_recipes.open('r') as my_file:
+            d = json.load(my_file)
+        return d
+    else:
+        return []
+
+
+def save_on_file(content):
+    my_list = read_recipes()
+    print(f"Content:\n{content}")
+    my_list.append(content)
+    with my_recipes.open("w") as my_file:
+        json.dump(my_list, my_file, ensure_ascii=False, indent=4)
+     
 
 def add_recipe(name, ingredients, people): # Method to add a new recipe
-    recipes[name] = {}
-    recipes[name]["name"] = name
-    recipes[name]["ingredients"] = ingredients
-    recipes[name]["people"] = people
+    content =  {
+              "name": name,
+              "ingredients": ingredients,
+              "people": people
+         }
+    save_on_file(content)
 
 def show_recipes(): # Method to show all available recipes
     print("Available recipes:")
-    for recipe_name in recipes:
-        print(recipe_name)
+    for name in read_recipes():
+        print(f"{name["name"]}")
 
 def show_recipe(name): # Method to show a specific recipe
-    if name in recipes:
-        print(f"Recipe of {name}:")
-        print(f"Ingredients = '{recipes[name]["ingredients"]}'")
-        print(f"People = '{recipes[name]["people"]}'")
-    else:
-        print(f"Recipe '{name}' not found.")
+    for i in read_recipes():
+        if name in i["name"]:
+            print(f"Recipe of {i["name"]}: ")
+            print(f"Ingridients are {i["ingredients"]}")
+            print(f"People {i["people"]}")
+        else:
+             continue
 
 
 
